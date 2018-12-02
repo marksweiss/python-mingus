@@ -96,7 +96,7 @@ def find_frequencies(data, freq=44100, bits=16):
     uniquePts = numpy.ceil((n + 1) / 2.0)
 
     # Scale by the length (n) and square the value to get the amplitude
-    p = [(abs(x) / float(n)) ** 2 * 2 for x in p[0:uniquePts]]
+    p = [(abs(x) / float(n)) ** 2 * 2 for x in p[0:int(uniquePts)]]
     p[0] = p[0] / 2
     if n % 2 == 0:
         p[-1] = p[-1] / 2
