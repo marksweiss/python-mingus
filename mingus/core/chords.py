@@ -96,9 +96,9 @@ from_shorthand (a lot) and their inversions.
  * from_shorthand - Generates chords from shorthand (eg. 'Cmin7')
 """
 
-import mingus.core.intervals
-import mingus.core.notes
-import mingus.core.keys
+import mingus.core.intervals as intervals
+import mingus.core.notes as notes
+import mingus.core.keys as keys
 from mingus.core.mt_exceptions import NoteFormatError, FormatError
 
 _triads_cache = {}
@@ -180,7 +180,7 @@ def triads(key):
     """
     if key in _triads_cache:
         return _triads_cache[key]
-    res = map(lambda x: triad(x, key), keys.get_notes(key))
+    res = list(map(lambda x: triad(x, key), keys.get_notes(key)))
     _triads_cache[key] = res
     return res
 
@@ -234,7 +234,7 @@ def sevenths(key):
     """Return all the sevenths chords in key in a list."""
     if key in _sevenths_cache:
         return _sevenths_cache[key]
-    res = map(lambda x: seventh(x, key), keys.get_notes(key))
+    res = list(map(lambda x: seventh(x, key), keys.get_notes(key)))
     _sevenths_cache[key] = res
     return res
 

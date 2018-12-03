@@ -52,7 +52,7 @@ Other scales
  * Octatonic(note)
 """
 
-import mingus.core.intervals
+import mingus.core.intervals as intervals
 from mingus.core.notes import augment, diminish, reduce_accidentals
 from mingus.core.keys import keys, get_notes
 from mingus.core.mt_exceptions import NoteFormatError, FormatError, RangeError
