@@ -365,7 +365,7 @@ def from_Composition(composition, width=80):
         for tracks in composition:
             tuning = tracks.get_tuning()
             ascii = []
-            for x in xrange(bars):
+            for x in range(bars):
                 if barindex + x < len(tracks):
                     bar = tracks[barindex + x]
                     r = from_Bar(bar, w, tuning, collapse=False)
