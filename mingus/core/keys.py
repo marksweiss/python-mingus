@@ -113,8 +113,8 @@ def get_notes(key='C'):
     result = []
 
     # Calculate notes
-    altered_notes = map(operator.itemgetter(0),
-            get_key_signature_accidentals(key))
+    altered_notes = list(map(operator.itemgetter(0),
+            get_key_signature_accidentals(key)))
 
     if get_key_signature(key) < 0:
         symbol = 'b'

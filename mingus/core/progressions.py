@@ -82,10 +82,10 @@ def to_chords(progression, key='C'):
             r = chords.chord_shorthand[suffix](r[0])
 
         while acc < 0:
-            r = map(notes.diminish, r)
+            r = list(map(notes.diminish, r))
             acc += 1
         while acc > 0:
-            r = map(notes.augment, r)
+            r = list(map(notes.augment, r))
             acc -= 1
         result.append(r)
     return result
