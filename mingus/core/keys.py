@@ -22,8 +22,8 @@
 This module provides a simple interface for dealing with keys.
 """
 
-from mt_exceptions import FormatError, NoteFormatError, RangeError
-import notes
+from mingus.core.mt_exceptions import FormatError, NoteFormatError, RangeError
+import mingus.core.notes as notes
 import operator
 from itertools import cycle, islice
 
@@ -106,15 +106,15 @@ def get_notes(key='C'):
     >>> get_notes('c')
     ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb']
     """
-    if _key_cache.has_key(key):
+    if key in _key_cache:
         return _key_cache[key]
     if not is_valid_key(key):
         raise NoteFormatError("unrecognized format for key '%s'" % key)
     result = []
 
     # Calculate notes
-    altered_notes = map(operator.itemgetter(0),
-            get_key_signature_accidentals(key))
+    altered_notes = list(map(operator.itemgetter(0),
+            get_key_signature_accidentals(key)))
 
     if get_key_signature(key) < 0:
         symbol = 'b'
